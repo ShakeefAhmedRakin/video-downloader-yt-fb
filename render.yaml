@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: video-downloader
+    runtime: node
+    region: singapore
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3000"
+      - key: HOSTNAME
+        value: "0.0.0.0"
