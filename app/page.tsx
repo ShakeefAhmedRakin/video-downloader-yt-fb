@@ -104,7 +104,14 @@ export default function Home() {
     const videoUrl = encodeURIComponent(video.downloadUrl);
     const downloadPath = `/api/download?url=${videoUrl}&filename=${filename}`;
 
-    window.open(downloadPath, "_blank");
+    // Use a temporary <a> tag instead of window.open — iOS blocks popups
+    const a = document.createElement("a");
+    a.href = downloadPath;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }, [video]);
 
   const handleReset = useCallback(() => {
