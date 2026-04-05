@@ -9,8 +9,7 @@ interface VideoResult {
   thumbnail: string;
   downloadUrl: string;
   quality: string;
-  duration?: string;
-  platform: "youtube" | "facebook";
+  platform: "facebook";
 }
 
 const STATUS_MESSAGES: Record<Status, string> = {
@@ -136,7 +135,7 @@ export default function Home() {
           }}
         >
           <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style={{ margin: "0 auto" }}>
-            <circle cx="28" cy="28" r="28" fill="#3b82f6" />
+            <circle cx="28" cy="28" r="28" fill="#1877f2" />
             <path
               d="M22 17L40 28L22 39V17Z"
               fill="white"
@@ -155,7 +154,7 @@ export default function Home() {
             lineHeight: 1.2,
           }}
         >
-          Video Downloader
+          Facebook Video Downloader
         </h1>
         <p
           style={{
@@ -166,7 +165,7 @@ export default function Home() {
             lineHeight: 1.5,
           }}
         >
-          Download videos from YouTube and Facebook. Just paste the link below.
+          Download Facebook videos for free. Just paste the link below.
         </p>
       </header>
 
@@ -199,7 +198,7 @@ export default function Home() {
             id="video-url"
             type="text"
             className="input-field"
-            placeholder="Paste YouTube or Facebook link here..."
+            placeholder="Paste Facebook video link here..."
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             disabled={isProcessing}
@@ -371,7 +370,7 @@ export default function Home() {
                     fontWeight: 500,
                   }}
                 >
-                  {video.platform === "youtube" ? "YouTube" : "Facebook"}
+                  Facebook
                 </span>
                 <span
                   style={{
@@ -386,21 +385,6 @@ export default function Home() {
                 >
                   {video.quality}
                 </span>
-                {video.duration && (
-                  <span
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
-                      background: "#f1f5f9",
-                      padding: "4px 12px",
-                      borderRadius: 8,
-                      fontWeight: 500,
-                    }}
-                  >
-                    {video.duration}
-                  </span>
-                )}
               </div>
             </div>
 
@@ -472,23 +456,6 @@ export default function Home() {
           Works with
         </p>
         <div style={{ display: "flex", gap: 24, justifyContent: "center" }}>
-          {/* YouTube icon */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              color: "#64748b",
-              fontSize: 15,
-              fontWeight: 500,
-            }}
-          >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="#ff0000">
-              <path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.7 31.7 0 000 12a31.7 31.7 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.7 31.7 0 0024 12a31.7 31.7 0 00-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z" />
-            </svg>
-            YouTube
-          </div>
-          {/* Facebook icon */}
           <div
             style={{
               display: "flex",
@@ -502,7 +469,22 @@ export default function Home() {
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#1877f2">
               <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
             </svg>
-            Facebook
+            Facebook Videos
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              color: "#64748b",
+              fontSize: 15,
+              fontWeight: 500,
+            }}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#1877f2">
+              <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+            </svg>
+            Facebook Reels
           </div>
         </div>
       </section>

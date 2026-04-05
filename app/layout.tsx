@@ -8,9 +8,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Video Downloader - YouTube & Facebook",
+  title: "Facebook Video Downloader",
   description:
-    "Download YouTube and Facebook videos easily in 720p. Simple, free, and fast.",
+    "Download Facebook videos easily for free. Simple and fast.",
   icons: {
     icon: "/favicon.ico",
   },

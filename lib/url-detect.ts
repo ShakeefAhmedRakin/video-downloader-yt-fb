@@ -1,22 +1,12 @@
-export type Platform = "youtube" | "facebook" | "unknown";
+export type Platform = "facebook" | "unknown";
 
 /**
- * Detects whether a URL is from YouTube or Facebook.
+ * Detects whether a URL is from Facebook.
  * Uses broad matching to avoid rejecting valid URLs.
  */
 export function detectPlatform(url: string): Platform {
   const trimmed = url.trim().toLowerCase();
 
-  // YouTube detection
-  if (
-    trimmed.includes("youtube.com/") ||
-    trimmed.includes("youtu.be/") ||
-    trimmed.includes("youtube-nocookie.com/")
-  ) {
-    return "youtube";
-  }
-
-  // Facebook detection — be very permissive
   if (
     trimmed.includes("facebook.com/") ||
     trimmed.includes("facebook.com/share") ||
@@ -31,32 +21,6 @@ export function detectPlatform(url: string): Platform {
   }
 
   return "unknown";
-}
-
-export function extractYouTubeId(url: string): string | null {
-  const trimmed = url.trim();
-
-  // youtube.com/shorts/ID
-  const shortsMatch = trimmed.match(/youtube\.com\/shorts\/([\w-]+)/);
-  if (shortsMatch) return shortsMatch[1];
-
-  // youtube.com/watch?v=ID
-  const watchMatch = trimmed.match(/[?&]v=([\w-]+)/);
-  if (watchMatch) return watchMatch[1];
-
-  // youtu.be/ID
-  const shortMatch = trimmed.match(/youtu\.be\/([\w-]+)/);
-  if (shortMatch) return shortMatch[1];
-
-  // youtube.com/embed/ID
-  const embedMatch = trimmed.match(/youtube\.com\/embed\/([\w-]+)/);
-  if (embedMatch) return embedMatch[1];
-
-  // youtube.com/live/ID
-  const liveMatch = trimmed.match(/youtube\.com\/live\/([\w-]+)/);
-  if (liveMatch) return liveMatch[1];
-
-  return null;
 }
 
 /**

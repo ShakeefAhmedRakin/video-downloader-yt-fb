@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { detectPlatform } from "@/lib/url-detect";
-import { getYouTubeInfo } from "@/lib/youtube";
 import { getFacebookInfo } from "@/lib/facebook";
-
-export const maxDuration = 30;
 
 export async function POST(request: NextRequest) {
   try {
@@ -34,15 +31,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "This link is not from YouTube or Facebook. Please paste a YouTube or Facebook video link.",
+            "This link is not from Facebook. Please paste a Facebook video link.",
         },
         { status: 400 }
       );
-    }
-
-    if (platform === "youtube") {
-      const info = await getYouTubeInfo(trimmedUrl);
-      return NextResponse.json(info);
     }
 
     const info = await getFacebookInfo(trimmedUrl);
