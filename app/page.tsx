@@ -210,13 +210,12 @@ export default function Home() {
             onChange={(e) => setUrl(e.target.value)}
             disabled={isProcessing}
             autoComplete="off"
-            autoFocus
           />
 
           <button
             type="submit"
             className="btn-primary"
-            disabled={isProcessing || !url.trim()}
+            disabled={isProcessing}
             style={{ width: "100%", marginTop: 16 }}
           >
             {isProcessing ? (
